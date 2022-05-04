@@ -1,17 +1,19 @@
 import logging
 import os
+from pickle import TRUE
 import sys
 
 import requests
 from bs4 import BeautifulSoup as bso
 from pathvalidate import sanitize_filename
 
-import qobuz_dl.spoofbuz as spoofbuz
-from qobuz_dl import downloader, qopy
-from qobuz_dl.color import CYAN, OFF, RED, YELLOW, DF, RESET
-from qobuz_dl.exceptions import NonStreamable
-from qobuz_dl.db import create_db, handle_download_id
-from qobuz_dl.utils import (
+import spoofbuz as spoofbuz
+import downloader
+import qopy
+from color import CYAN, OFF, RED, YELLOW, DF, RESET
+from exceptions import NonStreamable
+from db import create_db, handle_download_id
+from utils import (
     get_url_info,
     make_m3u,
     smart_discography_filter,
@@ -142,9 +144,10 @@ class QobuzDL:
             new_path = create_and_return_dir(
                 os.path.join(self.directory, sanitize_filename(content_name))
             )
-
-            if self.smart_discography and url_type == "artist":
+            logger.info(f"{YELLOW} {url_type} siamo fuori downloads in queue")
+            if (url_type == "artist" ):
                 # change `save_space` and `skip_extras` for customization
+                logger.info(f"{YELLOW} siamo dentro downloads in queue")
                 items = smart_discography_filter(
                     content,
                     save_space=True,

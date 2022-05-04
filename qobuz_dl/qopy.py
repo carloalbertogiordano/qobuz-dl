@@ -8,14 +8,14 @@ import time
 
 import requests
 
-from qobuz_dl.exceptions import (
+from exceptions import (
     AuthenticationError,
     IneligibleError,
     InvalidAppIdError,
     InvalidAppSecretError,
     InvalidQuality,
 )
-from qobuz_dl.color import GREEN, YELLOW
+from color import GREEN, YELLOW
 
 RESET = "Reset your credentials with 'qobuz-dl -r'"
 

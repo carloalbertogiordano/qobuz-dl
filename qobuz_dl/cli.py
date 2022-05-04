@@ -5,11 +5,11 @@ import glob
 import os
 import sys
 
-import qobuz_dl.spoofbuz as spoofbuz
-from qobuz_dl.color import GREEN, RED, YELLOW
-from qobuz_dl.commands import qobuz_dl_args
-from qobuz_dl.core import QobuzDL
-from qobuz_dl.downloader import DEFAULT_FOLDER, DEFAULT_TRACK
+import spoofbuz
+from color import GREEN, RED, YELLOW
+from commands import qobuz_dl_args
+from core import QobuzDL
+from downloader import DEFAULT_FOLDER, DEFAULT_TRACK
 
 logging.basicConfig(
     level=logging.INFO,

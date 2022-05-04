@@ -6,6 +6,7 @@ import time
 
 from mutagen.mp3 import EasyMP3
 from mutagen.flac import FLAC
+from numpy import True_
 
 logger = logging.getLogger(__name__)
 
@@ -74,7 +75,7 @@ def make_m3u(pl_directory):
 
 
 def smart_discography_filter(
-    contents: list, save_space: bool = False, skip_extras: bool = False
+    contents: list, save_space: bool, skip_extras: bool
 ) -> list:
     """When downloading some artists' discography, many random and spam-like
     albums can get downloaded. This helps filter those out to just get the good stuff.
@@ -91,7 +92,7 @@ def smart_discography_filter(
     """
 
     # for debugging
-    def print_album(album: dict) -> None:
+    def print_album(album: dict) -> True:
         logger.debug(
             f"{album['title']} - {album.get('version', '~~')} "
             "({album['maximum_bit_depth']}/{album['maximum_sampling_rate']}"
@@ -128,12 +129,12 @@ def smart_discography_filter(
         if title_ not in title_grouped:  # ?
             #            if (t := essence(item["title"])) not in title_grouped:
             title_grouped[title_] = []
-        title_grouped[title_].append(item)
+            title_grouped[title_].append(item)
 
     items = []
     for albums in title_grouped.values():
         best_bit_depth = max(a["maximum_bit_depth"] for a in albums)
-        get_best = min if save_space else max
+        get_best = max
         best_sampling_rate = get_best(
             a["maximum_sampling_rate"]
             for a in albums
