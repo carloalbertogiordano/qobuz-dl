@@ -20,27 +20,17 @@ Search, explore and download Lossless and Hi-Res music from [Qobuz](https://www.
 
 > You'll need an **active subscription**
 
-#### Install qobuz-dl with pip
-##### Linux / MAC OS
-```
-pip3 install --upgrade qobuz-dl
-```
-##### Windows
-```
-pip3 install windows-curses
-pip3 install --upgrade qobuz-dl
-```
 #### Run qobuz-dl and enter your credentials
 ##### Linux / MAC OS
 ```
-qobuz-dl
+python qobuz_dl/cli.py
 ```
+> If something fails, run `qobuz-dl -r` to reset your config file.
+
 ##### Windows
 ```
-qobuz-dl.exe
+I don't care about Windows
 ```
-
-> If something fails, run `qobuz-dl -r` to reset your config file.
 
 ## Examples
 
@@ -172,6 +162,8 @@ Attributes, methods and parameters have been named as self-explanatory as possib
 
 ## A note about Qo-DL
 `qobuz-dl` is inspired in the discontinued Qo-DL-Reborn. This tool uses two modules from Qo-DL: `qopy` and `spoofer`, both written by Sorrow446 and DashLt.
+## A note about this version
+* The `smart_discography_filter` (utils.py) works differently. Now it will keep only the track with highest bitrate/Hz.
 ## Disclaimer
 * This tool was written for educational purposes. I will not be responsible if you use this program in bad faith. By using it, you are accepting the [Qobuz API Terms of Use](https://static.qobuz.com/apps/api/QobuzAPI-TermsofUse.pdf).
 * `qobuz-dl` is not affiliated with Qobuz
